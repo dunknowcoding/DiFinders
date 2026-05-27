@@ -43,6 +43,7 @@ jobs:
       - uses: arduino/setup-arduino-cli@v1
       - name: Install cores
         run: |
+          arduino-cli config init --dest-dir "$HOME/.arduino15" 2>/dev/null || true
           if [ "${{ matrix.rp2040_index }}" = "true" ]; then
             arduino-cli config add board_manager.additional_urls \
               https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json

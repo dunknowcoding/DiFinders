@@ -9,11 +9,25 @@
 /* Default pins (optional; use numeric pins in .ino if you prefer) */
 #define DF_PIN_TRIG 2
 #define DF_PIN_ECHO 3
+#if defined(ARDUINO_ARCH_ESP32)
+#define DF_PIN_ANA 34
+#define DF_PIN_GP2E03_ANA 34
+#elif defined(ARDUINO_ARCH_RP2040)
+#define DF_PIN_ANA 26
+#define DF_PIN_GP2E03_ANA 26
+#else
 #define DF_PIN_ANA A0
 #define DF_PIN_GP2E03_ANA A0
+#endif
 #define DF_PIN_DIG 4
 #define DF_PIN_LINE_DIG 4
+#if defined(ARDUINO_ARCH_ESP32)
+#define DF_PIN_LINE_ANA 35
+#elif defined(ARDUINO_ARCH_RP2040)
+#define DF_PIN_LINE_ANA 27
+#else
 #define DF_PIN_LINE_ANA A1
+#endif
 #define DF_PIN_LINE_EMIT 5
 #define DF_PIN_PIR 6
 #define DF_PIN_MW 4

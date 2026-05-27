@@ -95,7 +95,7 @@ Example folders are authoritative when listed in [`.github/scripts/alias_example
 | `TW10SUART` | UART | [`AsciiUartRangeSensor`](sensors/AsciiUartRangeSensor.md) | `TW10S_UART_BasicRead` | ? |
 | `TW10S_UART` | UART | [`AsciiUartRangeSensor`](sensors/AsciiUartRangeSensor.md) | `TW10S_UART_BasicRead` | ? |
 | `US015` | UART | [`US100Sensor`](sensors/US100Sensor.md) | `US100_BasicRead` | ? |
-| `US100` | UART | [`US100Sensor`](sensors/US100Sensor.md) | `US100_TemperatureRead` | ? |
+| `US100` | UART | [`US100Sensor`](sensors/US100Sensor.md) | `US100_BasicRead` | ? |
 | `VL53L0X` | I2C | [`VL53L0XSensor`](sensors/VL53L0XSensor.md) | `VL53L0X_ContinuousRead` | ? |
 | `VL53L1CB` | I2C | [`VL53L1XSensor`](sensors/VL53L1XSensor.md) | `VL53L1X_BasicRead` | ? |
 | `VL53L1CB_SPI` | SPI | [`VL53L1XSpiSensor`](sensors/VL53L1XSpiSensor.md) | `VL53L1X_SPI` | ? |

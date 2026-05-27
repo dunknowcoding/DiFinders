@@ -75,7 +75,25 @@ def resolve_family_class(
 
 
 def list_example_folders() -> list[str]:
-    return sorted(d.name for d in EXAMPLES.iterdir() if d.is_dir())
+    """Only git-tracked example folders (ignores local untracked dirs)."""
+    import subprocess
+
+    try:
+        out = subprocess.check_output(
+            ["git", "ls-files", "examples"],
+            cwd=ROOT,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        )
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return sorted(d.name for d in EXAMPLES.iterdir() if d.is_dir())
+
+    folders: set[str] = set()
+    for line in out.splitlines():
+        parts = Path(line).parts
+        if len(parts) >= 2 and parts[0] == "examples":
+            folders.add(parts[1])
+    return sorted(folders)
 
 
 def match_examples_heuristic(alias: str, folders: list[str]) -> list[str]:

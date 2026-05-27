@@ -4,9 +4,11 @@
 
 #include "core/DiFindersConstants.h"
 
+using DiFinders::DetectionState;
 using DiFinders::MotionReading;
 using DiFinders::ProximityReading;
 using DiFinders::RangeReading;
+using DiFinders::SensorStatus;
 using DiFinders::SelfTestReport;
 using DiFinders::SensorProbe;
 using DiFinders::SensorHealth;

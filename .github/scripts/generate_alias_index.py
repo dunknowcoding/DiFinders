@@ -167,7 +167,8 @@ def render_markdown(rows: list[tuple[str, str, str, str, str, str]]) -> str:
 
 def main() -> None:
     rows = build_rows()
-    OUT.write_text(render_markdown(rows), encoding="utf-8")
+    with OUT.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(render_markdown(rows))
     print("wrote", OUT, "rows", len(rows))
     missing = sum(1 for _, _, _, primary, _ in rows if primary == "?")
     print("aliases without examples:", missing)

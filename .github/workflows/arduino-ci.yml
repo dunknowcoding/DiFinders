@@ -28,18 +28,27 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        fqbn:
-          - arduino:avr:uno
-          - arduino:renesas_uno:minima
-          - esp32:esp32:esp32
-          - rp2040:rp2040:rpipico
+        include:
+          - fqbn: arduino:avr:uno
+            core: arduino:avr
+          - fqbn: arduino:renesas_uno:minima
+            core: arduino:renesas_uno
+          - fqbn: esp32:esp32:esp32
+            core: esp32:esp32
+          - fqbn: rp2040:rp2040:rpipico
+            core: rp2040:rp2040
+            rp2040_index: true
     steps:
       - uses: actions/checkout@v4
       - uses: arduino/setup-arduino-cli@v1
       - name: Install cores
         run: |
+          if [ "${{ matrix.rp2040_index }}" = "true" ]; then
+            arduino-cli config add board_manager.additional_urls \
+              https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+          fi
           arduino-cli core update-index
-          arduino-cli core install arduino:avr arduino:renesas_uno rp2040:rp2040 esp32:esp32
+          arduino-cli core install "${{ matrix.core }}"
       - name: Compile Library_CompileSmoke
         run: |
           arduino-cli compile \

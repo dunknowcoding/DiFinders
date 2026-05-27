@@ -14,6 +14,7 @@ FORBIDDEN = [
     (re.compile(r"\bDF_PROBE\b"), "DF_PROBE"),
     (re.compile(r"\bDF_READ\b"), "DF_READ"),
     (re.compile(r"\bdf_code\b"), "df_code"),
+    (re.compile(r"\bdf_ok\b"), "df_ok"),
     (re.compile(r"\bdifinders_"), "difinders_"),
     (re.compile(r"\bDIFINDERS_PRINT_PROBE\b"), "DIFINDERS_PRINT_PROBE"),
 ]

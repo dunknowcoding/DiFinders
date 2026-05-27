@@ -37,11 +37,11 @@ void loop() {
 #endif
 
   RangeReading r = sonar.read();
-  if (df_ok(r)) {
+  if (r.status == SensorStatus::Ok || r.status == SensorStatus::OutOfRange) {
     Serial.print(F("distance_mm="));
     Serial.println(r.distanceMm);
   } else {
-    Serial.print(F("distance_status="));
+    Serial.print(F("status="));
     Serial.println(static_cast<uint8_t>(r.status));
   }
 

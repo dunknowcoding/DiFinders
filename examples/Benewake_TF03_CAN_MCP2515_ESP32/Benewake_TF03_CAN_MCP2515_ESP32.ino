@@ -73,6 +73,7 @@ void setup() {
 #if defined(MY_MCP2515_INT)
   pinMode(MY_MCP2515_INT, INPUT_PULLUP);
 #endif
+
   Serial.print(F("listening_can_id=0x"));
   Serial.println(tf03.transmitId(), HEX);
 }
@@ -88,7 +89,7 @@ void loop() {
   }
 
   RangeReading r = tf03.read();
-  if (df_ok(r)) {
+  if (r.status == SensorStatus::Ok || r.status == SensorStatus::OutOfRange) {
     Serial.print(F("distance_mm="));
     Serial.print(r.distanceMm);
     Serial.print(F(" strength="));

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="140" viewBox="0 0 720 140" role="img" aria-label="DiFinders">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#0d9488"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22d3ee"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="140" rx="16" fill="url(#bg)"/>
+  <circle cx="88" cy="70" r="36" fill="none" stroke="url(#accent)" stroke-width="3" opacity="0.9"/>
+  <circle cx="88" cy="70" r="8" fill="#22d3ee"/>
+  <path d="M 88 34 L 88 50 M 88 90 L 88 106 M 52 70 L 68 70 M 108 70 L 124 70" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+  <text x="150" y="58" font-family="Segoe UI, system-ui, sans-serif" font-size="42" font-weight="700" fill="#f8fafc">DiFinders</text>
+  <text x="152" y="92" font-family="Segoe UI, system-ui, sans-serif" font-size="16" fill="#94a3b8">Distance · Proximity · Motion · ToF</text>
+  <text x="152" y="118" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#22d3ee">github.com/dunknowcoding/DiFinders</text>
+</svg>

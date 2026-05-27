@@ -1,0 +1,210 @@
+# Authoritative sketch folder mapping for docs/ALIAS_INDEX.md
+# Keys match DiFinders.h class names and "using" aliases (sketch types).
+# family_class overrides doc link when inheritance chain is ambiguous.
+
+overrides:
+  # Pulse ultrasonic
+  AJ_SR04M:
+    examples: [HC_SR04_BasicRead]
+  HY_SRF05:
+    examples: [HC_SR04_BasicRead]
+  SRF05:
+    examples: [HC_SR04_BasicRead]
+  RCWL1601:
+    examples: [HC_SR04_BasicRead]
+  RCWL1655:
+    examples: [HC_SR04_BasicRead]
+  RCWL1670:
+    examples: [HC_SR04_BasicRead]
+
+  # UART ranging
+  A02YYUW:
+    examples: [A02YYUW_BasicRead]
+  TFMini:
+    examples: [TFLuna_BasicRead]
+  TFLuna:
+    examples: [TFLuna_BasicRead]
+  HC_SR04:
+    examples: [HC_SR04_BasicRead]
+  Benewake_TF03:
+    examples: [TFLuna_BasicRead]
+  A01NYUB:
+    examples: [A02YYUW_BasicRead]
+  DYP_A01:
+    examples: [DYP_A01_BasicRead]
+  DYP_A01A:
+    examples: [DYP_A01_BasicRead]
+  DYP_A01B:
+    examples: [DYP_A01_BasicRead]
+  ME007YS:
+    examples: [DYP_A01_BasicRead]
+  US015:
+    examples: [US100_BasicRead]
+  WT53R485:
+    examples: [WT53R485_BasicRead]
+  WT53R_485:
+    examples: [WT53R485_BasicRead]
+  WT53R_TTL:
+    examples: [TOFSenseF2P_UART_BasicRead]
+  WT53BRC_TTL:
+    examples: [TOFSenseF2P_UART_BasicRead]
+  CMOSLaserDistanceSensor:
+    examples: [TOFSenseF2P_UART_BasicRead]
+  HighPrecisionLaserRangingModule:
+    examples: [TOFSenseF2P_UART_BasicRead]
+  TOF200F_Modbus:
+    examples: [WT53R485_BasicRead]
+
+  # GY-US42
+  GY_US42_UART:
+    examples: [GY_US42_UART_BasicRead]
+  GY_US42_Pulse:
+    examples: [GY_US42_Pulse_BasicRead]
+  GY_US42V2:
+    examples: [GY_US42_I2C_BasicRead]
+  SRF02:
+    examples: [GY_US42_I2C_BasicRead]
+
+  # ST ToF / reseller ToF SKUs
+  TOF400C:
+    examples: [VL53L1X_BasicRead]
+  VL53L1CB:
+    examples: [VL53L1X_BasicRead]
+  TOF400C_SPI:
+    examples: [VL53L1X_SPI]
+  VL53L1CB_SPI:
+    examples: [VL53L1X_SPI]
+  TOF200C:
+    examples: [VL53L0X_BasicRead]
+  TOF200F:
+    examples: [VL53L0X_BasicRead]
+  TOF050C:
+    examples: [VL6180X_BasicRead]
+  TOF050F:
+    examples: [VL6180X_BasicRead]
+  TOFSenseF2P:
+    examples: [TOFSenseF2P_I2C_BasicRead]
+  TOFSenseF2P_UART:
+    examples: [TOFSenseF2P_UART_BasicRead]
+
+  # IR / reflective / PIR
+  E18_D60NK:
+    examples: [E18_D80NK_BasicRead]
+  IR_Photoelectric_Switch:
+    examples: [E18_D80NK_BasicRead]
+  LM393_IR:
+    examples: [TCRT5000_ReflectiveRead]
+  WWZMDiB_IR:
+    examples: [TCRT5000_ReflectiveRead]
+  IR_ObstacleAvoidance:
+    examples: [TCRT5000_ReflectiveRead]
+  HC_SR501:
+    examples: [HC_SR501_MotionRead]
+  HC_SR505:
+    examples: [HC_SR501_MotionRead]
+  AM312:
+    examples: [HC_SR501_MotionRead]
+  MA312:
+    examples: [HC_SR501_MotionRead]
+  MB7XXXAnalog:
+    examples: [MB10XXAnalog_BasicRead]
+
+  # mmWave UART
+  HLK_LD2410_UART:
+    examples: [HLK_LD2410_UartHighRateRead, HLK_LD2410_PresenceRead]
+  HLK_LD2410B:
+    examples: [HLK_LD2410_UartHighRateRead]
+  HLK_LD2410C_UART:
+    examples: [HLK_LD2410_UartHighRateRead]
+  HLK_LD2410S_UART:
+    examples: [HLK_LD2410S_UART_BasicRead]
+  HLK_LD2411:
+    examples: [HLK_LD2411_UART_BasicRead]
+  HLK_LD2411_UART:
+    examples: [HLK_LD2411_UART_BasicRead]
+  HLK_LD2411S:
+    examples: [HLK_LD2411_UART_BasicRead]
+  HLK_LD2411S_UART:
+    examples: [HLK_LD2411_UART_BasicRead]
+  HLK_LD2412:
+    examples: [HLK_LD2412_UART_BasicRead]
+  HLK_LD2412_UART:
+    examples: [HLK_LD2412_UART_BasicRead]
+  HLK_LD2420:
+    examples: [HLK_LD2420_UART_BasicRead]
+  HLK_LD2420_UART:
+    examples: [HLK_LD2420_UART_BasicRead]
+  HLK_LD2461:
+    examples: [HLK_LD2461_UART_BasicRead]
+  HLK_LD2461_UART:
+    examples: [HLK_LD2461_UART_BasicRead]
+  HLK_LD2450:
+    examples: [HLK_LD2461_UART_BasicRead]
+  HLK_LD2451:
+    examples: [HLK_LD2461_UART_BasicRead]
+  HLK_LD2402:
+    examples: [HLK_LD2461_UART_BasicRead]
+
+  # mmWave GPIO OUT
+  HLK_LD2410:
+    examples: [HLK_LD2410_PresenceRead]
+  HLK_LD2410C:
+    examples: [HLK_LD2410_PresenceRead]
+  HLK_LD2410S:
+    examples: [HLK_LD2410S_PresenceRead]
+  HLK_LD2410S_OUT:
+    examples: [HLK_LD2410S_PresenceRead]
+  HLK_LD2412_OUT:
+    examples: [HLK_LD2412_PresenceRead]
+  HLK_LD1125H:
+    examples: [HLK_LD2410_PresenceRead]
+  HLK_LD1155H:
+    examples: [HLK_LD2410_PresenceRead]
+
+  # Open protocol mmWave
+  DFRobot_C4001:
+    family_class: OpenProtocolMmwaveSensor
+    examples: [OpenProtocol_Mmwave_BasicRead]
+  DFRobotMmWaveC4001:
+    family_class: OpenProtocolMmwaveSensor
+    examples: [OpenProtocol_Mmwave_BasicRead]
+  MR24HPC1:
+    family_class: OpenProtocolMmwaveSensor
+    examples: [OpenProtocol_Mmwave_BasicRead]
+  TW10SUART:
+    family_class: AsciiUartRangeSensor
+    examples: [TW10S_UART_BasicRead]
+
+  # CAN
+  Benewake_TF03_CAN:
+    examples:
+      - Benewake_TF03_CAN_MCP2515_ESP32
+      - Benewake_TF03_CAN_MCP2515_UnoR4
+      - Benewake_TF03_CAN_SN65HVD230_ESP32
+  TF03_CAN:
+    examples:
+      - Benewake_TF03_CAN_MCP2515_ESP32
+      - Benewake_TF03_CAN_MCP2515_UnoR4
+      - Benewake_TF03_CAN_SN65HVD230_ESP32
+
+  # Multi-board demos (not a single driver class)
+  Platform_MultiRead:
+    family_class: PulseUltrasonicSensor
+    examples: [Platform_MultiRead]
+  MultiSensor_QuickRead:
+    family_class: PulseUltrasonicSensor
+    examples: [MultiSensor_QuickRead]
+
+  # Sharp variants without dedicated examples
+  GP2Y0A02:
+    examples: [GP2Y0A21_BasicRead]
+  GP2Y0A41:
+    examples: [GP2Y0A21_BasicRead]
+  GP2Y0A51:
+    examples: [GP2Y0A21_BasicRead]
+  GP2Y0A60:
+    examples: [GP2Y0A21_BasicRead]
+  GP2Y0D805:
+    examples: [GP2Y0D810_DetectRead]
+  GP2Y0D815:
+    examples: [GP2Y0D810_DetectRead]

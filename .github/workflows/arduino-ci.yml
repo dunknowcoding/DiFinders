@@ -1,0 +1,86 @@
+name: Arduino CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  lint-and-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Example lint (legacy API + English)
+        run: |
+          python .github/scripts/lint_examples.py
+          python .github/scripts/check_docs_english.py
+      - name: ALIAS_INDEX must be committed output of generator
+        run: python .github/scripts/check_alias_index.py
+
+  compile-smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        fqbn:
+          - arduino:avr:uno
+          - arduino:renesas_uno:minima
+          - esp32:esp32:esp32
+          - rp2040:rp2040:rpipico
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v1
+      - name: Install cores
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:avr arduino:renesas_uno rp2040:rp2040 esp32:esp32
+      - name: Compile Library_CompileSmoke
+        run: |
+          arduino-cli compile \
+            --fqbn "${{ matrix.fqbn }}" \
+            --libraries "${{ github.workspace }}" \
+            "${{ github.workspace }}/examples/Library_CompileSmoke"
+
+  esp32-uart-samples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v1
+      - name: Install ESP32 core
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install esp32:esp32
+      - name: Compile UART sample sketches
+        run: python .github/scripts/compile_sample_uart_examples.py
+
+  high-rate-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v1
+      - name: Install cores
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:renesas_uno esp32:esp32
+      - name: Compile high-rate examples
+        run: python .github/scripts/compile_high_rate_examples.py
+
+  can-examples:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arduino/setup-arduino-cli@v1
+      - name: Install cores and MCP2515 library
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install arduino:renesas_uno esp32:esp32
+          arduino-cli lib install "autowp-mcp2515"
+      - name: Compile CAN examples
+        run: python .github/scripts/compile_can_examples.py
+

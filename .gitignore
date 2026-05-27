@@ -1,0 +1,36 @@
+# Arduino build artifacts
+*.hex
+*.elf
+*.bin
+*.eep
+*.map
+build/
+.cache/
+
+# Logs and local test output
+*.log
+round-logs/
+test-output/
+coverage/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.cursor/
+
+# Local maintainer trees (not shipped in library ZIP)
+extras/
+drivers/
+/scripts/
+/test/
+/tests/
+**/__pycache__/
+*.pyc
+
+# One-off local automation at repo root
+strip_sketch_helpers.py
+normalize_*.py
+*_local.*
+RELEASE_NOTES_*.md

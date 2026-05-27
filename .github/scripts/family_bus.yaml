@@ -1,0 +1,35 @@
+# Default bus label for ALIAS_INDEX (override per alias in alias_examples.yaml with bus:)
+
+families:
+  PulseUltrasonicSensor: GPIO
+  GyUs42PulseSensor: GPIO
+  TFMiniSensor: UART
+  A02YYUWSensor: UART
+  US100Sensor: UART
+  AsciiUartRangeSensor: UART
+  NoopLoopToFSensor: UART
+  ModbusDistanceSensor: RS485
+  GyUs42I2cSensor: I2C
+  VL53L0XSensor: I2C
+  VL53L1XSensor: I2C
+  VL53L1XSpiSensor: SPI
+  VL53L4CDSensor: I2C
+  VL53L4CXSensor: I2C
+  VL6180XSensor: I2C
+  ToFSenseFI2CSensor: I2C
+  Gp2Y0E03Sensor: I2C
+  SharpAnalogDistanceSensor: Analog
+  MaxBotixAnalogSensor: Analog
+  ReflectiveIrSensor: GPIO
+  DigitalIrBarrierSensor: GPIO
+  SharpDigitalDistanceSensor: GPIO
+  PirMotionSensor: GPIO
+  LD2410RadarSensor: UART
+  LD2411RadarSensor: UART
+  LD2412RadarSensor: UART
+  LD2420RadarSensor: UART
+  LD2450RadarSensor: UART
+  LD2461RadarSensor: UART
+  MmwavePresenceSensor: GPIO
+  OpenProtocolMmwaveSensor: UART
+  TF03CanSensor: CAN

@@ -8,6 +8,8 @@
 
 #include "DiFindersConstants.h"
 
+#include "DiFindersNrfCompat.h"
+
 #include "DiFindersTypes.h"
 
 
@@ -58,7 +60,7 @@ inline uint16_t df_adc(uint8_t kind) {
 
   }
 
-#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_RP2040)
+#if defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_STM32) || defined(ARDUINO_ARCH_RP2040) || DIFINDERS_IS_NRF
 
   return 4095;
 

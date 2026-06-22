@@ -11,7 +11,7 @@ DiFinders is an **Arduino IDE board library** for distance, proximity, and motio
    - Windows: `Documents/Arduino/libraries/DiFinders`
    - macOS: `~/Documents/Arduino/libraries/DiFinders`
 3. Restart the IDE. Confirm **Sketch → Include Library** lists **DiFinders**.
-4. Install board packages you need (AVR, **Arduino UNO R4**, **ESP32**, **SAMD**, **STM32**, **Raspberry Pi Pico / Pico 2**).
+4. Install board packages you need (AVR, **Arduino UNO R4**, **ESP32**, **SAMD**, **STM32**, **Raspberry Pi Pico / Pico 2**, **ArduinoNRF / Adafruit nRF52**).
 
 No separate “board support package” is required beyond your target MCU core.
 
@@ -119,6 +119,8 @@ Use **`configureTiming()`** for timeout and trigger pulse width on difficult mou
 | **UNO R4 Minima/WiFi** | 3.3 V logic — confirm sensor I/O tolerance. |
 | **ESP32 / S3 / C3** | Map UART pins in `beginSensorUart()` for large RX buffers. See `HLK_LD2410_UartHighRateRead`, `VL53L1X_SpiBurstRead` (SPI burst, not Wire DMA). |
 | **RP2040 / Pico 2** | `Serial1` pin selection via core defines; compile smoke tested. |
+| **ArduinoNRF nRF52** | ProMicro / SuperMini / XIAO clones — 3.3 V, `Serial1`, `Wire.begin(sda,scl)`; use board silk `D*` pins in examples. |
+| **Adafruit nRF52 / Mbed Nano 33 BLE** | Feather, Nano 33 BLE — 3.3 V; UART/I2C per variant pin map. |
 | **STM32 / SAMD** | `Wire`/`Serial` as per variant; check `printBoardInfo()` at boot. |
 
 Call **`printBoardInfo(Serial)`** once in `setup()` to log detected family, logic level, and DMA support.

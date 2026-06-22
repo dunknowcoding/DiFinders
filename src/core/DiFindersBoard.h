@@ -3,6 +3,8 @@
 #include <Arduino.h>
 #include <Wire.h>
 
+#include "DiFindersNrfCompat.h"
+
 namespace DiFinders {
 
 /** Detected MCU family for wiring and capability hints (not a specific SKU). */
@@ -24,6 +26,7 @@ enum class BoardFamily : uint8_t {
   SamdMkr,
   SamdNano33IoT,
   Nrf52840,
+  Nrf5340,
   Stm32,
   Mbed,
 };
@@ -59,7 +62,10 @@ inline BoardFamily detectBoardFamily() {
 #else
   return BoardFamily::Rp2040;
 #endif
-#elif defined(ARDUINO_ARCH_NRF52840) || defined(ARDUINO_NRF52_ADAFRUIT_FEATHER) || defined(ARDUINO_NANO33BLE)
+#elif defined(ARDUINO_ARCH_NRF53) || defined(NRF5340_XXAA) || defined(NRF5340_XXAA_APPLICATION) \
+    || defined(ARDUINO_NRF5340_XXAA)
+  return BoardFamily::Nrf5340;
+#elif DIFINDERS_IS_NRF52
   return BoardFamily::Nrf52840;
 #elif defined(ARDUINO_ARCH_SAMD)
 #if defined(ARDUINO_SAMD_NANO_33_IOT)
@@ -110,6 +116,8 @@ inline const char* boardFamilyName(BoardFamily family) {
       return "samd-nano33-iot";
     case BoardFamily::Nrf52840:
       return "nrf52840";
+    case BoardFamily::Nrf5340:
+      return "nrf5340";
     case BoardFamily::Stm32:
       return "stm32";
     case BoardFamily::Mbed:
@@ -169,7 +177,7 @@ inline HardwareSerial* sensorUartPort() {
 inline uint32_t defaultI2cClockHz() {
 #if defined(ARDUINO_ARCH_AVR)
   return 100000UL;
-#elif defined(ARDUINO_ARCH_ESP32) || defined(ARDUINO_ARCH_RP2040) || defined(ARDUINO_ARCH_NRF52840)
+#elif DIFINDERS_IS_NRF
   return 400000UL;
 #else
   return 400000UL;

@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/dunknowcoding/DiFinders/releases/tag/v0.1.0"><code>v0.1.0</code></a> ·
-  <code>AVR</code> · <code>UNO R4</code> · <code>ESP32</code> · <code>SAMD</code> · <code>STM32</code> · <code>RP2040 / Pico 2</code>
+  <a href="https://github.com/dunknowcoding/DiFinders/releases/tag/v0.1.1"><code>v0.1.1</code></a> ·
+  <code>AVR</code> · <code>UNO R4</code> · <code>ESP32</code> · <code>SAMD</code> · <code>STM32</code> · <code>RP2040 / Pico 2</code> · <code>nRF52 / nRF53</code>
 </p>
 
 ---
@@ -37,7 +37,7 @@
 | --- | --- |
 | **Arduino-native** | Sketch → Include Library → Examples → Upload. No PlatformIO required. |
 | **Reseller-first aliases** | `HC_SR04`, `TFMini`, `VL53L1X`, `HLK_LD2410_UART`, `WT53R485`, `Benewake_TF03_CAN`, … each map to one tested driver. |
-| **Multi-MCU** | Same sketch patterns on AVR, UNO R4, ESP32, SAMD, STM32, RP2040 — CI compiles `Library_CompileSmoke` on four cores. |
+| **Multi-MCU** | Same sketch patterns on AVR, UNO R4, ESP32, SAMD, STM32, RP2040, ArduinoNRF / Adafruit / Mbed Nordic — CI compiles `Library_CompileSmoke` on four cores. |
 | **Unified diagnostics** | `ready()`, `selfTest()`, `health()`, `lastBusError()`; I2C families add `readRegister*` / `dumpRegisters`. |
 | **Honest timing** | UART settle, ToF boot waits, ultrasonic µs→mm, Modbus turnaround — tuned for real modules. |
 | **English examples** | Wiring blocks, board notes, canonical Serial keys (`distance_mm=`, `motion=`, `status=`). |
@@ -50,7 +50,7 @@ Complements Adafruit / DFRobot / SparkFun libraries for the **long tail** of clo
 
 ### Arduino IDE 2.x (recommended)
 
-1. Download [**v0.1.0 source ZIP**](https://github.com/dunknowcoding/DiFinders/archive/refs/tags/v0.1.0.zip) or clone this repo.
+1. Download [**v0.1.1 source ZIP**](https://github.com/dunknowcoding/DiFinders/archive/refs/tags/v0.1.1.zip) or clone this repo.
 2. **Sketch → Include Library → Add .ZIP Library…** → select the `DiFinders` folder (contains `library.properties`).
 3. Restart the IDE. Confirm **Sketch → Include Library → DiFinders** appears.
 4. Install your board package (e.g. **Arduino UNO R4 Boards**, **esp32** by Espressif).
@@ -231,6 +231,9 @@ Copy an example folder into your sketchbook and edit `MY_*` pin defines.
 | RP2040 / Pico 2 | Flexible UART pins; 3.3 V |
 | Mega 2560 | Multiple hardware UARTs |
 | SAMD / STM32 | 3.3 V logic; per-core pin maps |
+| **ArduinoNRF (nRF52)** | ProMicro / SuperMini / nice!nano / XIAO clones — 3.3 V, `Serial1`, `Wire.begin(sda,scl)`; compile-smoke verified on ProMicro nRF52840 |
+| **Adafruit nRF52 / Mbed Nano 33 BLE** | Feather nRF52840, Nano 33 BLE — detected via `ARDUINO_NRF52_*` / `ARDUINO_NANO33BLE`; 3.3 V, 400 kHz I2C default |
+| **nRF5340 (application core)** | Adafruit / Nordic nRF5340 targets — detected via `ARDUINO_ARCH_NRF53`; same 3.3 V sensor wiring assumptions |
 
 Call `printBoardInfo(Serial);` once in `setup()` to log detected family and logic level.
 

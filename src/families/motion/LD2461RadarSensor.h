@@ -2,6 +2,12 @@
 
 #include <Arduino.h>
 #include <Stream.h>
+#ifdef min
+#undef min
+#endif
+#ifdef max
+#undef max
+#endif
 #include <math.h>
 
 #include "../../core/DiFindersDiagnostics.h"

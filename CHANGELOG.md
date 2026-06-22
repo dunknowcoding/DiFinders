@@ -4,6 +4,24 @@
 > version stays at **0.1.0** until the first GitHub release; sections below (0.4.x) record
 > internal milestones during bring-up.
 
+## 0.1.1 — Nordic nRF52 / nRF53 support (2026-06-22)
+
+### Added
+
+- **ArduinoNRF board package** support (`ARDUINO_ARCH_NRF52`): ProMicro, SuperMini, nice!nano, XIAO, and other variants in the [ArduinoNRF](https://github.com/dunknowcoding/ArduinoNRF) core.
+- **Official Nordic ecosystem** detection for Adafruit nRF52 BSP, Arduino Mbed Nano 33 BLE (`ARDUINO_NANO33BLE`), and nRF5340 application cores (`ARDUINO_ARCH_NRF53`).
+- **`DiFindersNrfCompat.h`** — shared nRF52/nRF53 board-family macros used by board helpers.
+
+### Fixed
+
+- **`min`/`max` macro clash** with `<math.h>` on Nordic cores (LD2450/LD2461 radar headers).
+- **Portable `String` parsing** in `AsciiUartRangeSensor` (`isdigit`, `c_str()` instead of Arduino-only helpers).
+
+### Changed
+
+- Default I2C clock remains **400 kHz** on all Nordic targets; 3.3 V logic assumed.
+- Compile-smoke verified on **ArduinoNRF ProMicro nRF52840** (no hardware test in this release).
+
 ## 0.1.0 — first public release (2026-05-27)
 
 - **Library version** `0.1.0` in `library.properties` for the initial GitHub / ZIP release.

@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../../core/DiFindersDiagnostics.h"
 #include "../../core/DiFindersTypes.h"
@@ -178,7 +179,7 @@ class AsciiUartRangeSensor {
     int startIndex = -1;
     for (uint16_t index = 0; index < line.length(); ++index) {
       const char value = line.charAt(index);
-      const bool isNumeric = isDigit(value) || value == '.' || value == ',' ||
+      const bool isNumeric = isdigit(static_cast<unsigned char>(value)) || value == '.' || value == ',' ||
                              (allowSignedValues_ && index == 0 && value == '-');
       if (isNumeric) {
         startIndex = index;
@@ -198,7 +199,8 @@ class AsciiUartRangeSensor {
     numeric.replace(",", ".");
 
     char temp[20];
-    numeric.toCharArray(temp, sizeof(temp));
+    strncpy(temp, numeric.c_str(), sizeof(temp) - 1U);
+    temp[sizeof(temp) - 1U] = '\0';
     char* endPtr = nullptr;
     const float value = static_cast<float>(strtod(temp, &endPtr));
     if (endPtr == temp) {

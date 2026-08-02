@@ -58,7 +58,8 @@ inline void gpioInterruptIsr(GpioInterruptLine* line) {
 
 inline void attachGpioInterrupt(uint8_t pin, void (*isrFn)(), GpioInterruptLine& line, uint8_t mode) {
   line.arm();
-#if defined(ARDUINO_ARCH_RENESAS) || defined(ARDUINO_ARCH_RP2040)
+#if defined(ARDUINO_ARCH_RENESAS) || defined(ARDUINO_ARCH_RP2040) || \
+    defined(ARDUINO_ARCH_SAMD)
   attachInterrupt(digitalPinToInterrupt(pin), isrFn, static_cast<PinStatus>(mode));
 #else
   attachInterrupt(digitalPinToInterrupt(pin), isrFn, mode);

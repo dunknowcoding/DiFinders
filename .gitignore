@@ -21,6 +21,7 @@ Thumbs.db
 .cursor/
 
 # Local maintainer trees (not shipped in library ZIP)
+_work/
 extras/
 drivers/
 /scripts/

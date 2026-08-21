@@ -101,6 +101,14 @@ mmWave: after `begin(Serial1)`, call `read()` in `loop()`, then `motion()` / `mo
 | TRIG | MCU output |
 | ECHO | MCU input (5 V tolerant pin on 3.3 V boards, or divider) |
 | VCC | 5 V on most “HC-SR04” boards; 3.3 V on some JSN-SR04T |
+| **GND** | **MCU GND — required.** TRIG and ECHO are referenced to it. |
+
+**GND is not optional and its absence does not look like a wiring fault.**
+Without it the module still lights up through the ECHO line's protection
+diode, still accepts a trigger, and simply never returns an echo — so every
+reading times out and reads as out of range. That is indistinguishable from
+a sensor aimed at open air, which is why it is worth ruling out first when a
+brand-new build reads nothing at all.
 
 Use **`configureTiming()`** for timeout and trigger pulse width on difficult mounts.
 
@@ -205,7 +213,7 @@ Each example header documents **board compatibility** and **wiring** when pins a
 | Serial Monitor garbage | USB `Serial` baud 115200; sensor on `Serial1` at **module** baud (`defaultBaudRate()`). |
 | Always `status=3` (Timeout) | Wrong baud, swapped TX/RX, missing GND, or `flushRx()` after replug. |
 | I2C init failed | Address 0x29 conflict, weak pull-ups, 5 V sensor on 3.3 V MCU without shifter. |
-| HC-SR04 reads 0 | ECHO divider on 3.3 V board; `configureTiming()` too short. |
+| HC-SR04 reads 0 or always out of range | **Missing GND between module and MCU** — check this first, it presents as a permanent timeout rather than an error. Then: ECHO divider on 3.3 V board; `configureTiming()` too short; nothing within range. |
 | Modbus always errors | RS485 A/B swap; **DE/RE** wired to `setTransmitEnablePin()`; 120 Ω termination. |
 | CAN no frames | 120 Ω termination, 500 kbit/s, MCP2515 crystal macro, `onCanFrame()` before `read()`. |
 | Two VL53 on one bus | Unique I2C addresses via **XSHUT** sequence (`VL53L1X_DualSensorRead`). |
